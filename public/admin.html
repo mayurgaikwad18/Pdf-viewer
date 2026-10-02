@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin &mdash; Document Portal</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">&#128193;</span>
+        <span>
+          <strong>Document Portal</strong>
+          <small>Admin console</small>
+        </span>
+      </a>
+      <div class="topbar-actions">
+        <a class="btn btn-ghost" href="/">View public page</a>
+        <button id="logoutBtn" type="button" class="btn btn-ghost hidden">Log out</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Login view -->
+    <section id="loginView" class="auth-card hidden">
+      <h1>Admin Login</h1>
+      <p class="muted">Enter the admin password to manage files.</p>
+      <form id="loginForm">
+        <label for="passwordInput">Password</label>
+        <input id="passwordInput" type="password" placeholder="Enter admin password" required autocomplete="current-password" />
+        <div id="loginError" class="alert alert-error hidden"></div>
+        <button id="loginBtn" class="btn btn-block" type="submit">Log in</button>
+      </form>
+    </section>
+
+    <!-- Dashboard view -->
+    <section id="dashboardView" class="hidden">
+      <div class="hero hero-row">
+        <div>
+          <h1>Manage Files</h1>
+          <p class="muted">Upload new files or remove files that are no longer needed.</p>
+        </div>
+        <div id="dashCount" class="pill"></div>
+      </div>
+
+      <div class="card">
+        <h2>Upload files</h2>
+        <p class="muted">PDF, Word, Excel, PowerPoint, images, text, audio, video, archives &mdash; any format up to 100&nbsp;MB per file.</p>
+        <div id="dropzone" class="dropzone">
+          <div class="dropzone-icon">&#11014;&#65039;</div>
+          <p><strong>Drag &amp; drop files here</strong> or</p>
+          <button id="browseBtn" type="button" class="btn btn-outline">Browse files</button>
+          <input id="fileInput" type="file" multiple hidden />
+        </div>
+        <div id="selectedList" class="selected-list"></div>
+        <div id="uploadError" class="alert alert-error hidden"></div>
+        <div id="uploadSuccess" class="alert alert-success hidden"></div>
+        <div id="progressWrap" class="progress-wrap hidden">
+          <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
+          <span id="progressText" class="muted"></span>
+        </div>
+        <button id="uploadBtn" class="btn" type="button" disabled>Upload</button>
+      </div>
+
+      <div class="card">
+        <h2>Uploaded files</h2>
+        <div id="adminLoading" class="state">Loading&hellip;</div>
+        <div id="adminEmpty" class="state hidden">No files uploaded yet.</div>
+        <div class="table-wrap">
+          <table id="filesTable" class="files-table hidden">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Size</th>
+                <th>Uploaded</th>
+                <th class="right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="filesTbody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Change password</h2>
+        <p class="muted">Choose a strong password (at least 6 characters).</p>
+        <form id="passwordForm" class="password-form">
+          <div class="field">
+            <label for="currentPassword">Current password</label>
+            <input id="currentPassword" type="password" required autocomplete="current-password" />
+          </div>
+          <div class="field">
+            <label for="newPassword">New password</label>
+            <input id="newPassword" type="password" minlength="6" required autocomplete="new-password" />
+          </div>
+          <div class="field">
+            <label for="confirmPassword">Confirm new password</label>
+            <input id="confirmPassword" type="password" minlength="6" required autocomplete="new-password" />
+          </div>
+          <div id="passwordMsg" class="alert hidden"></div>
+          <button class="btn" type="submit">Update password</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

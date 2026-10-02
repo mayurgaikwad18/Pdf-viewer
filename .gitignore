@@ -1,0 +1,4 @@
+node_modules/
+data/auth.json
+data/secret.txt
+data/files.json

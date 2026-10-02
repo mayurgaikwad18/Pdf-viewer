@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document Portal &mdash; View &amp; Download Files</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/">
+        <span class="brand-badge">&#128193;</span>
+        <span>
+          <strong>Document Portal</strong>
+          <small>View &amp; download shared files</small>
+        </span>
+      </a>
+      <a class="btn btn-ghost" href="/admin">Admin Login</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Shared Files</h1>
+      <p>Browse, preview and download files uploaded by the administrator.</p>
+    </section>
+
+    <div class="toolbar">
+      <div class="search">
+        <input id="searchInput" type="search" placeholder="Search files by name&hellip;" autocomplete="off" />
+      </div>
+      <span id="fileCount" class="muted"></span>
+    </div>
+
+    <div id="loading" class="state">Loading files&hellip;</div>
+    <div id="empty" class="state hidden"></div>
+    <div id="fileGrid" class="grid hidden"></div>
+  </main>
+
+  <footer class="footer container">
+    <span class="muted">Files are shared by the site administrator.</span>
+  </footer>
+
+  <div id="viewer" class="modal hidden">
+    <div class="modal-backdrop" data-close-viewer></div>
+    <div class="modal-box">
+      <div class="modal-head">
+        <strong id="viewerTitle" class="truncate"></strong>
+        <div class="modal-actions">
+          <a id="viewerDownload" class="btn btn-sm" href="#">Download</a>
+          <button type="button" class="btn btn-ghost btn-sm" data-close-viewer>Close</button>
+        </div>
+      </div>
+      <div id="viewerBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <script src="/js/common.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
